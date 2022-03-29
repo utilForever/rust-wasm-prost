@@ -10,7 +10,8 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
     },
     experiments: {
-        asyncWebAssembly: true
+        asyncWebAssembly: true,
+        topLevelAwait: true
     },
     module: {
         rules: [
