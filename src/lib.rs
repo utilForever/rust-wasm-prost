@@ -2,7 +2,6 @@ include!(concat!(env!("OUT_DIR"), "/protobuf.rs"));
 
 extern crate web_sys;
 
-use serde::{Deserialize, Serialize};
 use wasm_bindgen::prelude::*;
 
 use crate::rust_wasm_prost::simple::Student;
@@ -16,7 +15,10 @@ macro_rules! log {
 }
 
 #[wasm_bindgen]
-pub fn convert_proto_ts_to_rust(data: String) {}
+pub fn convert_proto_ts_to_rust(data: String) {
+    let student: Student = serde_json::from_str(data.as_str()).unwrap();
+    log!("{:?}", student);
+}
 
 #[wasm_bindgen]
 pub fn convert_proto_rust_to_ts() {}
