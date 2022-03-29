@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package rust_wasm_prost.simple;
+
+message Student {
+  string name = 1;
+  int32 age = 2;
+  float height = 3;
+  float weight = 4;
+  repeated int32 grades = 5;
+}
