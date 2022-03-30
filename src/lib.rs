@@ -16,6 +16,10 @@ macro_rules! log {
 
 #[wasm_bindgen]
 pub fn convert_proto_ts_to_rust(data: String) {
+    // In TypeScript, keyword 'repeated' adds the postfix 'List' to member variable.
+    // Therefore, we need to remove the postfix 'List' to make it work in Rust.
+    let data = str::replace(&data, "gradesList", "grades");
+    
     let student: Student = serde_json::from_str(data.as_str()).unwrap();
     log!("{:?}", student);
 }
