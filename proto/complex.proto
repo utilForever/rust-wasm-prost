@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package rust_wasm_prost.complex;
+
+message FruitCondition {
+  repeated float brix = 1;
+  string origin = 2;
+}
+
+message VegetableCondition {
+  repeated string nutrients = 1;
+  string origin = 2;
+}
+
+message Item {
+  int32 unique_id = 1;
+
+  message Information {
+    string name = 1;
+    int32 count = 2;
+
+    enum Type {
+      FRUIT = 0;
+      VEGETABLE = 1;
+    }
+    Type type = 3;
+  }
+  Information information = 2;
+
+  oneof condition {
+    FruitCondition fruit_condition = 3;
+    VegetableCondition vegetable_condition = 4;
+  }
+}
