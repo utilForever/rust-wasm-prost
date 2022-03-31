@@ -12,9 +12,9 @@ let student1: Student.AsObject = {
 let data = JSON.stringify(student1);
 console.log(data);
 
-wasm.convert_proto_ts_to_rust(data);
+wasm.convert_proto_student_ts_to_rust(data);
 
-let student2 = wasm.convert_proto_rust_to_ts();
+let student2 = wasm.convert_proto_student_rust_to_ts();
 console.log(student2);
 
 let student3: Student.AsObject = JSON.parse(student2);
