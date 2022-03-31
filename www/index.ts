@@ -56,3 +56,15 @@ let data_item2 = JSON.stringify(item2);
 console.log(data_item2);
 
 wasm.convert_proto_item_ts_to_rust(data_item2);
+
+let item3 = wasm.convert_proto_item_rust_to_ts1();
+console.log(item3);
+
+let item4: Item.AsObject = JSON.parse(item3);
+console.log(item4);
+
+let item5 = wasm.convert_proto_item_rust_to_ts2();
+console.log(item5);
+
+let item6: Item.AsObject = JSON.parse(item5);
+console.log(item6);
