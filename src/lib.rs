@@ -5,6 +5,7 @@ extern crate web_sys;
 use wasm_bindgen::prelude::*;
 
 use crate::rust_wasm_prost::simple::Student;
+use crate::rust_wasm_prost::complex::Item;
 
 // A macro to provide 'println!(..)'-style syntax for 'console.log' logging.
 #[allow(unused_macros)]
@@ -35,4 +36,16 @@ pub fn convert_proto_student_rust_to_ts() -> String {
     };
 
     serde_json::to_string(&student).unwrap()
+}
+
+#[wasm_bindgen]
+pub fn convert_proto_item_ts_to_rust(data: String) {
+    // In TypeScript, keyword 'repeated' adds the postfix 'List' to member variable.
+    // Therefore, we need to remove the postfix 'List' to make it work in Rust.
+    let data = str::replace(&data, "uniqueId", "unique_id");
+    let data = str::replace(&data, "brixList", "brix");
+    let data = str::replace(&data, "nutrientsList", "nutrients");
+
+    let item: Item = serde_json::from_str(data.as_str()).unwrap();
+    log!("{:?}", item);
 }
