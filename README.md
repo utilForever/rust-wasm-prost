@@ -1,5 +1,7 @@
 # rust-wasm-prost
 
+[![License](https://img.shields.io/badge/Licence-MIT-blue.svg)](https://github.com/utilForever/rust-wasm-prost/blob/main/LICENSE) [![Check](https://github.com/utilForever/rust-wasm-prost/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/utilForever/rust-wasm-prost/actions/workflows/main.yml)
+
 This repository is a simple code for checking crate 'prost' on WebAssembly (🦀 + 🕸️ = 💖).
 
 ## Requirements
