@@ -57,6 +57,19 @@ pub fn convert_raw_bytes_student_ts_to_rust(data: &[u8]) {
 }
 
 #[wasm_bindgen]
+pub fn convert_raw_bytes_student_rust_to_ts() -> Vec<u8> {
+    let student = Student {
+        name: "John".to_string(),
+        age: 20,
+        height: 182.4,
+        weight: 76.2,
+        grades: vec![88, 75, 92],
+    };
+
+    prost::Message::encode_to_vec(&student)
+}
+
+#[wasm_bindgen]
 pub fn convert_proto_item_rust_to_ts1() -> String {
     let item = Item {
         unique_id: 201,
