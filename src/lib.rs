@@ -51,6 +51,12 @@ pub fn convert_proto_item_ts_to_rust(data: String) {
 }
 
 #[wasm_bindgen]
+pub fn convert_raw_bytes_student_ts_to_rust(data: &[u8]) {
+    let student: Student = prost::Message::decode(data).expect("failed to decode protobuf binary");
+    log!("{:?}", student);
+}
+
+#[wasm_bindgen]
 pub fn convert_proto_item_rust_to_ts1() -> String {
     let item = Item {
         unique_id: 201,
