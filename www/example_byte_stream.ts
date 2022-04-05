@@ -11,9 +11,9 @@ export function example_using_byte_stream() {
     student.setGradesList([100, 90, 85]);
 
     let student1_bytes = student.serializeBinary();
-    wasm.convert_raw_bytes_student_ts_to_rust(student1_bytes);
+    wasm.convert_student_ts_to_rust_using_byte_stream(student1_bytes);
 
-    let student2_bytes = wasm.convert_raw_bytes_student_rust_to_ts();
+    let student2_bytes = wasm.convert_student_rust_to_ts_using_byte_stream();
     let student2 = Student.deserializeBinary(student2_bytes);
     console.log(student2);
 
@@ -32,7 +32,7 @@ export function example_using_byte_stream() {
     item1.setFruitCondition(fruitCondition1);
 
     let item1_bytes = item1.serializeBinary();
-    wasm.convert_raw_bytes_item_ts_to_rust(item1_bytes);
+    wasm.convert_item_ts_to_rust_using_byte_stream(item1_bytes);
 
     let information2 = new Item.Information();
     information2.setName("Onion");
@@ -49,13 +49,13 @@ export function example_using_byte_stream() {
     item2.setVegetableCondition(vetetableCondition2);
 
     let item2_bytes = item2.serializeBinary();
-    wasm.convert_raw_bytes_item_ts_to_rust(item2_bytes);
+    wasm.convert_item_ts_to_rust_using_byte_stream(item2_bytes);
 
-    let item3_bytes = wasm.convert_raw_bytes_item_rust_to_ts1();
+    let item3_bytes = wasm.convert_item_rust_to_ts_using_byte_stream_1();
     let item3 = Item.deserializeBinary(item3_bytes);
     console.log(item3);
 
-    let item4_bytes = wasm.convert_raw_bytes_item_rust_to_ts2();
+    let item4_bytes = wasm.convert_item_rust_to_ts_using_byte_stream_2();
     let item4 = Item.deserializeBinary(item4_bytes);
     console.log(item4);
 }

@@ -7,13 +7,13 @@ use crate::rust_wasm_prost::complex::Item;
 use crate::rust_wasm_prost::simple::Student;
 
 #[wasm_bindgen]
-pub fn convert_raw_bytes_student_ts_to_rust(data: &[u8]) {
+pub fn convert_student_ts_to_rust_using_byte_stream(data: &[u8]) {
     let student: Student = prost::Message::decode(data).expect("failed to decode protobuf binary");
     log!("{:?}", student);
 }
 
 #[wasm_bindgen]
-pub fn convert_raw_bytes_student_rust_to_ts() -> Vec<u8> {
+pub fn convert_student_rust_to_ts_using_byte_stream() -> Vec<u8> {
     let student = Student {
         name: "John".to_string(),
         age: 20,
@@ -26,13 +26,13 @@ pub fn convert_raw_bytes_student_rust_to_ts() -> Vec<u8> {
 }
 
 #[wasm_bindgen]
-pub fn convert_raw_bytes_item_ts_to_rust(data: &[u8]) {
+pub fn convert_item_ts_to_rust_using_byte_stream(data: &[u8]) {
     let item: Item = prost::Message::decode(data).expect("failed to decode protobuf binary");
     log!("{:?}", item);
 }
 
 #[wasm_bindgen]
-pub fn convert_raw_bytes_item_rust_to_ts1() -> Vec<u8> {
+pub fn convert_item_rust_to_ts_using_byte_stream_1() -> Vec<u8> {
     let item = Item {
         unique_id: 201,
         information: Some(crate::rust_wasm_prost::complex::item::Information {
@@ -54,7 +54,7 @@ pub fn convert_raw_bytes_item_rust_to_ts1() -> Vec<u8> {
 }
 
 #[wasm_bindgen]
-pub fn convert_raw_bytes_item_rust_to_ts2() -> Vec<u8> {
+pub fn convert_item_rust_to_ts_using_byte_stream_2() -> Vec<u8> {
     let item = Item {
         unique_id: 202,
         information: Some(crate::rust_wasm_prost::complex::item::Information {

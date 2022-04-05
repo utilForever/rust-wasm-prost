@@ -7,7 +7,7 @@ use crate::rust_wasm_prost::complex::Item;
 use crate::rust_wasm_prost::simple::Student;
 
 #[wasm_bindgen]
-pub fn convert_proto_student_ts_to_rust(data: String) {
+pub fn convert_student_ts_to_rust_using_json(data: String) {
     // In TypeScript, keyword 'repeated' adds the postfix 'List' to member variable.
     // Therefore, we need to remove the postfix 'List' to make it work in Rust.
     let data = str::replace(&data, "gradesList", "grades");
@@ -17,7 +17,7 @@ pub fn convert_proto_student_ts_to_rust(data: String) {
 }
 
 #[wasm_bindgen]
-pub fn convert_proto_student_rust_to_ts() -> String {
+pub fn convert_student_rust_to_ts_using_json() -> String {
     let student = Student {
         name: "John".to_string(),
         age: 20,
@@ -30,7 +30,7 @@ pub fn convert_proto_student_rust_to_ts() -> String {
 }
 
 #[wasm_bindgen]
-pub fn convert_proto_item_ts_to_rust(data: String) {
+pub fn convert_item_ts_to_rust_using_json(data: String) {
     // In TypeScript, keyword 'repeated' adds the postfix 'List' to member variable.
     // Therefore, we need to remove the postfix 'List' to make it work in Rust.
     let data = str::replace(&data, "uniqueId", "unique_id");
@@ -42,7 +42,7 @@ pub fn convert_proto_item_ts_to_rust(data: String) {
 }
 
 #[wasm_bindgen]
-pub fn convert_proto_item_rust_to_ts1() -> String {
+pub fn convert_item_rust_to_ts_using_json_1() -> String {
     let item = Item {
         unique_id: 201,
         information: Some(crate::rust_wasm_prost::complex::item::Information {
@@ -64,7 +64,7 @@ pub fn convert_proto_item_rust_to_ts1() -> String {
 }
 
 #[wasm_bindgen]
-pub fn convert_proto_item_rust_to_ts2() -> String {
+pub fn convert_item_rust_to_ts_using_json_2() -> String {
     let item = Item {
         unique_id: 202,
         information: Some(crate::rust_wasm_prost::complex::item::Information {

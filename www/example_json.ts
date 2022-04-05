@@ -12,9 +12,9 @@ export function example_using_json() {
     };
 
     let student1_json = JSON.stringify(student);
-    wasm.convert_proto_student_ts_to_rust(student1_json);
+    wasm.convert_student_ts_to_rust_using_json(student1_json);
 
-    let student2_json = wasm.convert_proto_student_rust_to_ts();
+    let student2_json = wasm.convert_student_rust_to_ts_using_json();
     let student2: Student.AsObject = JSON.parse(student2_json);
     console.log(student2);
 
@@ -45,16 +45,16 @@ export function example_using_json() {
     };
 
     let item1_json = JSON.stringify(item1);
-    wasm.convert_proto_item_ts_to_rust(item1_json);
+    wasm.convert_item_ts_to_rust_using_json(item1_json);
 
     let item2_json = JSON.stringify(item2);
-    wasm.convert_proto_item_ts_to_rust(item2_json);
+    wasm.convert_item_ts_to_rust_using_json(item2_json);
 
-    let item3_json = wasm.convert_proto_item_rust_to_ts1();
+    let item3_json = wasm.convert_item_rust_to_ts_using_json_1();
     let item3: Item.AsObject = JSON.parse(item3_json);
     console.log(item3);
 
-    let item4_json = wasm.convert_proto_item_rust_to_ts2();
+    let item4_json = wasm.convert_item_rust_to_ts_using_json_2();
     let item4: Item.AsObject = JSON.parse(item4_json);
     console.log(item4);
 }
