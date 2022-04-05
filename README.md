@@ -4,11 +4,81 @@
 
 This repository is a simple code for checking crate 'prost' on WebAssembly (🦀 + 🕸️ = 💖).
 
+## What is `prost`?
+
+`prost` is a [Protocol Buffers](https://developers.google.com/protocol-buffers/) implementation for the [Rust Language](https://www.rust-lang.org/). `prost` generates simple, idiomatic Rust code from `proto2` and `proto3` files.
+
+## How to serialize/deserialize Protocol Buffers data?
+
+1. Byte Stream: Check `src/example_byte_stream.rs` and `www/example_byte_stream.ts`.
+2. JSON: Check `src/example_json.rs` and `www/example_json.ts`.
+
+## Protocol Buffers Struct in Example
+
+You can see in `proto` folder.
+
+### Simple
+
+```protobuf
+syntax = "proto3";
+
+package rust_wasm_prost.simple;
+
+message Student {
+  string name = 1;
+  int32 age = 2;
+  float height = 3;
+  float weight = 4;
+  repeated int32 grades = 5;
+}
+```
+
+### Complex
+
+```protobuf
+syntax = "proto3";
+
+package rust_wasm_prost.complex;
+
+message FruitCondition {
+  repeated float brix = 1;
+  string origin = 2;
+}
+
+message VegetableCondition {
+  repeated string nutrients = 1;
+  string origin = 2;
+}
+
+message Item {
+  int32 unique_id = 1;
+
+  message Information {
+    string name = 1;
+    int32 count = 2;
+
+    enum Type {
+      FRUIT = 0;
+      VEGETABLE = 1;
+    }
+    Type type = 3;
+  }
+  Information information = 2;
+
+  oneof condition {
+    FruitCondition fruit_condition = 3;
+    VegetableCondition vegetable_condition = 4;
+  }
+}
+
+```
+
 ## Requirements
 
 * [The Rust Toolchain](https://www.rust-lang.org/tools/install)
 * [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/)
 * [prost](https://github.com/tokio-rs/prost)
+* [serde](https://serde.rs/)
 * [ts-protoc-gen](https://github.com/improbable-eng/ts-protoc-gen)
 * [npm](https://docs.npmjs.com/getting-started)
 
