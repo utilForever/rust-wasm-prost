@@ -112,3 +112,9 @@ pub fn convert_proto_item_rust_to_ts2() -> String {
 
     serde_json::to_string(&item).unwrap()
 }
+
+#[wasm_bindgen]
+pub fn convert_raw_bytes_item_ts_to_rust(data: &[u8]) {
+    let item: Item = prost::Message::decode(data).expect("failed to decode protobuf binary");
+    log!("{:?}", item);
+}
