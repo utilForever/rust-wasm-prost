@@ -116,3 +116,11 @@ item8.setVegetableCondition(vetetableCondition8);
 
 let item8_bytes = item8.serializeBinary();
 wasm.convert_raw_bytes_item_ts_to_rust(item8_bytes);
+
+let item9_bytes = wasm.convert_raw_bytes_item_rust_to_ts1();
+let item9 = Item.deserializeBinary(item9_bytes);
+console.log(item9);
+
+let item10_bytes = wasm.convert_raw_bytes_item_rust_to_ts2();
+let item10 = Item.deserializeBinary(item10_bytes);
+console.log(item10);
