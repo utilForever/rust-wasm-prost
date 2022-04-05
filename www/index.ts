@@ -78,3 +78,7 @@ student4.setGradesList([100, 90, 85]);
 
 let student4_bytes = student4.serializeBinary();
 wasm.convert_raw_bytes_student_ts_to_rust(student4_bytes);
+
+let student5_bytes = wasm.convert_raw_bytes_student_rust_to_ts();
+let student5 = Student.deserializeBinary(student5_bytes);
+console.log(student5);
