@@ -68,3 +68,13 @@ console.log(item5);
 
 let item6: Item.AsObject = JSON.parse(item5);
 console.log(item6);
+
+let student4 = new Student();
+student4.setName("Chris");
+student4.setAge(34);
+student4.setHeight(175.0);
+student4.setWeight(80.0);
+student4.setGradesList([100, 90, 85]);
+
+let student4_bytes = student4.serializeBinary();
+wasm.convert_raw_bytes_student_ts_to_rust(student4_bytes);
